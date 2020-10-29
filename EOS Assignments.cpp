@@ -7,21 +7,36 @@ using namespace std;
 int main()
 {
 	string pathLED = "sys/class/leds/beaglebone:green:usr";
-	int numberLED;
+	int numberLED=0;
 	int ledValue;
 		 string ledMode;
-	cout << "enter the LED number you would like to turn on";
+	cout << "enter the LED number you would like to activate \n to to activate ALL Leds enter 4";
 	cin >> ledValue;
 	cout << "enter a mode for the LED";
 	cin >> ledMode;
 	
-	if (ledValue!=NULL && !(ledMode.empty)) {
+	if (ledValue >=0 && ledMode !="") {
+		switch (ledValue)
+		{
+		case 0: numberLED = 0;
+			break;
+		case 1:numberLED = 1;
+			break;
+		case 2: numberLED = 2;
+			break;
+		case 3: numberLED = 3;
+			break;
+		case 4:numberLED=4;
+			break;
+		default: cout << "you entered an invalid value, please enter a number between 1-4";
+			break;
+		}
 		cout << "you entered: " << ledValue + " " + ledMode;
 
 	}
 	else
 	{
-		cout << "enter the LED number you would like to turn on & the mode you would like to activate";
+		cout << "enter the LED number you would like to turn on & the mode you would like to set";
 
 	}
 
